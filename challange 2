@@ -1,0 +1,27 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract EtherValue {
+
+    uint256 public amountInWei;
+
+    // Function to receive Ether. msg.value will contain the value sent.
+    receive() external payable {
+        amountInWei = msg.value;
+    }
+
+    // Function to get the amount in Wei
+    function getAmountInWei() public view returns (uint256) {
+        return amountInWei;
+    }
+
+    // Function to get the amount in Ether
+    function getAmountInEther() public view returns (uint256) {
+        return amountInWei / 1 ether;
+    }
+
+    // Function to get the amount in Gwei
+    function getAmountInGwei() public view returns (uint256) {
+        return amountInWei / 1 gwei;
+    }
+}
